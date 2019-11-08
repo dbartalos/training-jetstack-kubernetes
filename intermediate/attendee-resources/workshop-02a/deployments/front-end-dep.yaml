@@ -5,32 +5,29 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: catalogue
-  labels:
-    name: catalogue
+  name: front-end
   namespace: sock-shop
 spec:
   replicas: 1
   selector:
     matchLabels:
-      name: catalogue
+      name: front-end
+      version: 0.2.0
   template:
     metadata:
       labels:
-        name: catalogue
+        name: front-end
+        version: 0.2.0
     spec:
       containers:
-      - name: catalogue
-        image: weaveworksdemos/catalogue:0.3.5
-        command: ["/app"]
-        args:
-        - -port=80
+      - name: front-end
+        image: weaveworksdemos/front-end:0.3.12
         resources:
-          limits:
-            cpu: 50m
-            memory: 100Mi
           requests:
-            cpu: 50m
+            cpu: 100m
             memory: 100Mi
+        env:
+        - name: SESSION_REDIS
+          value: "true"
         ports:
-        - containerPort: 80
+        - containerPort: 8079

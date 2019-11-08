@@ -5,29 +5,29 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: front-end
+  name: front-end-canary
   namespace: sock-shop
 spec:
   replicas: 1
   selector:
     matchLabels:
       name: front-end
-      version: 0.2.0
+      version: 0.2.1
   template:
     metadata:
       labels:
         name: front-end
-        version: 0.2.0
+        version: 0.2.1
     spec:
       containers:
       - name: front-end
-        image: weaveworksdemos/front-end:0.3.12
+        image: gcr.io/jetstack-workshops/front-end:0.2.1
         resources:
           requests:
-            cpu: 50m
+            cpu: 100m
             memory: 300Mi
           limits:
-            cpu: 200m
+            cpu: 300m
             memory: 1000Mi
         env:
         - name: SESSION_REDIS

@@ -22,15 +22,5 @@ spec:
       containers:
       - name: catalogue
         image: weaveworksdemos/catalogue:0.3.5
-        command: ["/app"]
-        args:
-        - -port=80
-        resources:
-          limits:
-            cpu: 50m
-            memory: 100Mi
-          requests:
-            cpu: 50m
-            memory: 100Mi
         ports:
         - containerPort: 80
