@@ -7,7 +7,7 @@ metadata:
     name: front-end
 spec:
   containers:
-  - name: hello-kubernetes
-    image: paulbouwer/hello-kubernetes:1.5
-    ports:
-    - containerPort: 8080
+    - name: hello-kubernetes
+      image: paulbouwer/hello-kubernetes:1.5
+      ports:
+        - containerPort: 8080
